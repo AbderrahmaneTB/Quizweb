@@ -316,21 +316,21 @@ button:focus {
   body {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 20px;
+    padding: 10px;
   }
 
   .main, .quizmain {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     min-height: auto;
-    margin: 0;
-    border-radius: 5px;
+    margin: 10px 0;
+    border-radius: 10px;
   }
 
   .welcom {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 10px;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
   }
 
   .star {
@@ -341,16 +341,15 @@ button:focus {
   .circle-timer {
     width: 100px;
     height: 100px;
-    margin-left: 0;
-    margin-right: auto;
+    margin: 0 auto;
   }
 
   .progress-circle, .background-circle {
-    stroke-width: 6;
+    stroke-width: 8;
   }
 
   .time-text {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     top: 50%;
     left: 50%;
   }
@@ -361,25 +360,25 @@ button:focus {
   }
 
   .question {
-    font-size: 1.2em;
+    font-size: 1.3rem;
   }
 
   .answer-button, .answer-button-correct, .answer-button-incorrect {
     width: 100%;
     font-size: 1rem;
-    padding: 10px;
+    padding: 12px;
     margin: 5px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   }
 
   button {
     font-size: 1rem;
-    padding: 10px 20px;
+    padding: 12px 20px;
   }
 
   .score {
-    font-size: 1.5rem;
-    padding: 10px 20px;
+    font-size: 1.4rem;
+    padding: 12px 15px;
     margin: 10px auto;
     margin-left: 0;
     text-align: center;
@@ -388,11 +387,11 @@ button:focus {
   .mini {
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .miniscore, .miniques {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     padding: 15px;
     margin: 10px 0;
     text-align: center;
@@ -401,17 +400,32 @@ button:focus {
 
 @media (max-width: 480px) {
   .welcom {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 8px;
+    letter-spacing: 0.5px;
   }
 
   .circle-timer {
     width: 80px;
     height: 80px;
+    margin: 0 auto;
+  }
+
+  .progress-circle, .background-circle {
+    stroke-width: 6;
   }
 
   .time-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .quesbox {
+    padding: 10px;
+    margin: 5px 0;
+  }
+
+  .question {
+    font-size: 1rem;
   }
 
   .answer-button, .answer-button-correct, .answer-button-incorrect {
@@ -426,11 +440,19 @@ button:focus {
 
   .score {
     font-size: 1.2rem;
-    padding: 8px 15px;
+    padding: 8px 10px;
   }
 
   .miniscore, .miniques {
     font-size: 1rem;
     padding: 10px;
   }
+
+  .main, .quizmain {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
 }
+
+
