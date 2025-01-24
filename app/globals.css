@@ -81,7 +81,6 @@ body {
 }
 
 
-
 .quizmain {
   background: linear-gradient(135deg, #8c56d9, #923399);
   width: 80%;
@@ -311,24 +310,27 @@ button:focus {
   display: flex;
   margin: 20px;
   margin-left: 40px;
-}
-
+} 
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
-    padding: 10px;
+    justify-content: flex-start;
+    padding: 20px;
   }
 
-  .main {
+  .main, .quizmain {
     width: 100%;
     padding: 15px;
     min-height: auto;
+    margin: 0;
+    border-radius: 5px;
   }
 
   .welcom {
     font-size: 1.5rem;
     padding: 10px;
+    letter-spacing: 0.5px;
   }
 
   .star {
@@ -336,16 +338,15 @@ button:focus {
     padding: 10px 20px;
   }
 
-  .quizmain {
-    width: 100%;
-    padding: 15px;
-    min-height: auto;
-  }
-
   .circle-timer {
     width: 100px;
     height: 100px;
     margin-left: 0;
+    margin-right: auto;
+  }
+
+  .progress-circle, .background-circle {
+    stroke-width: 6;
   }
 
   .time-text {
@@ -354,231 +355,82 @@ button:focus {
     left: 50%;
   }
 
+  .quesbox {
+    padding: 15px;
+    margin: 10px 0;
+  }
+
+  .question {
+    font-size: 1.2em;
+  }
+
+  .answer-button, .answer-button-correct, .answer-button-incorrect {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    margin: 5px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
   button {
     font-size: 1rem;
-    padding: 10px 15px;
+    padding: 10px 20px;
   }
 
   .score {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    margin: 10px auto;
     margin-left: 0;
-    width: 100%;
-    padding: 10px;
-    box-shadow: none;
-  }
-
-  .quesbox {
-    font-size: 1rem;
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .answer-button,
-  .answer-button-correct,
-  .answer-button-incorrect {
-    width: 100%;
-    font-size: 1rem;
-    margin: 5px 0;
-    padding: 10px;
+    text-align: center;
   }
 
   .mini {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    margin-top: 20px;
   }
 
-  .miniscore,
-  .miniques {
-    font-size: 1rem;
-    padding: 10px;
-    margin: 10px;
+  .miniscore, .miniques {
+    font-size: 1.2em;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: center;
   }
 }
 
-/* Base styles for all screen sizes remain the same */
-
-/* Extra Small Devices (Phones < 480px) */
 @media (max-width: 480px) {
-  body {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .main {
-    width: 95%;
-    padding: 10px;
-    min-height: auto;
-  }
-
   .welcom {
     font-size: 1.2rem;
-    padding: 5px;
-  }
-
-  .star {
-    font-size: 0.9rem;
-    padding: 8px 15px;
-  }
-
-  .quizmain {
-    width: 100%;
-    padding: 10px;
+    padding: 8px;
   }
 
   .circle-timer {
     width: 80px;
     height: 80px;
-    margin-left: 0;
   }
 
   .time-text {
     font-size: 1.2rem;
-    top: 50%;
-    left: 50%;
   }
 
-  button {
+  .answer-button, .answer-button-correct, .answer-button-incorrect {
     font-size: 0.9rem;
-    padding: 8px 10px;
-  }
-
-  .score {
-    font-size: 1rem;
-    margin-left: 0;
-    width: 100%;
-    padding: 8px;
-    box-shadow: none;
-  }
-
-  .quesbox {
-    font-size: 0.9rem;
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .answer-button,
-  .answer-button-correct,
-  .answer-button-incorrect {
-    width: 100%;
-    font-size: 0.9rem;
-    margin: 5px 0;
     padding: 8px;
   }
 
-  .mini {
-    flex-direction: column;
-    align-items: flex-start;
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
   }
 
-  .miniscore,
-  .miniques {
-    font-size: 0.8rem;
-    padding: 5px;
-    margin: 5px;
-  }
-}
-
-/* Medium Devices (Tablets 768px - 1200px) */
-@media (min-width: 768px) and (max-width: 1200px) {
-  .main {
-    width: 90%;
-    padding: 15px;
+  .score {
+    font-size: 1.2rem;
+    padding: 8px 15px;
   }
 
-  .welcom {
-    font-size: 1.8rem;
+  .miniscore, .miniques {
+    font-size: 1rem;
     padding: 10px;
-  }
-
-  .star {
-    font-size: 1rem;
-    padding: 12px 25px;
-  }
-
-  .quizmain {
-    width: 90%;
-  }
-
-  .circle-timer {
-    width: 120px;
-    height: 120px;
-    margin-left: 10px;
-  }
-
-  .time-text {
-    font-size: 1.6rem;
-  }
-
-  button {
-    font-size: 1rem;
-    padding: 12px 20px;
-  }
-
-  .score {
-    font-size: 1.5rem;
-    margin-left: 0;
-    width: 100%;
-    padding: 15px;
-  }
-
-  .quesbox {
-    font-size: 1.2rem;
-  }
-
-  .answer-button,
-  .answer-button-correct,
-  .answer-button-incorrect {
-    width: 45%;
-    font-size: 1rem;
-    padding: 12px;
-  }
-}
-
-/* Large Devices (Desktops > 1200px) */
-@media (min-width: 1200px) {
-  .main {
-    width: 70%;
-    padding: 20px;
-  }
-
-  .welcom {
-    font-size: 2.5rem;
-    padding: 20px;
-  }
-
-  .quizmain {
-    width: 70%;
-  }
-
-  .circle-timer {
-    width: 150px;
-    height: 150px;
-  }
-
-  .time-text {
-    font-size: 2rem;
-  }
-
-  button {
-    font-size: 1.2rem;
-    padding: 15px 30px;
-  }
-
-  .score {
-    font-size: 2rem;
-    width: auto;
-  }
-
-  .quesbox {
-    font-size: 1.5rem;
-    padding: 20px;
-  }
-
-  .answer-button,
-  .answer-button-correct,
-  .answer-button-incorrect {
-    width: calc(50% - 10px);
-    font-size: 1.2rem;
-    padding: 15px;
   }
 }
