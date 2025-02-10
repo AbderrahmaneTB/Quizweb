@@ -114,21 +114,21 @@ body {
 .background-circle {
   fill: none;
   stroke: #e6e6e6;
-  stroke-width: 10;
+  stroke-width: 7;
 }
 
 .progress-circle {
   fill: none;
   stroke: #5b23a4;
-  stroke-width: 10;
+  stroke-width: 7;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.3s linear;
 }
 
 .time-text {
   position: absolute;
-  top: 65%;
-  left: 36%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
   font-weight: bold;
@@ -309,7 +309,7 @@ button:focus {
   padding: 30px;
   display: flex;
   margin: 20px;
-  margin-left: 40px;
+  margin-left: 60px;
 } 
 
 @media (max-width: 768px) {

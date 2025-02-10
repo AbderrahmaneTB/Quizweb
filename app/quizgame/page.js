@@ -155,7 +155,7 @@ export default function Game() {
   return (
     <div className="quizmain">
       <div className="circle-timer">
-        <svg className="progress-ring">
+       <svg className="progress-ring" viewBox="0 0 100 100" width="100%" height="100%">
           <circle className="background-circle" cx="50" cy="50" r={circleRadius}></circle>
           <circle
             className="progress-circle"
