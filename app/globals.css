@@ -165,22 +165,7 @@ button:focus {
   outline: none;
 }
 
-.score {
-  background-color: hsl(270, 75%, 28%);
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  padding: 15px 30px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(45, 44, 110, 0.2);
-  margin-top: 20px;
-  margin-left: 105px;
-  width: fit-content;
-}
+
 
 .quesbox {
   position: relative;
@@ -288,29 +273,86 @@ button:focus {
   margin-left: auto;
 }
 
-.mini{
-  display: flex;
+.answer-button-correct:hover {
+  background: linear-gradient(135deg, #06a22a, #0ca250);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.miniscore{
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #ffffff;
-  padding: 30px;
-  display: flex;
-  margin: 20px;
-
+.answer-button-incorrect:hover {
+  background: linear-gradient(135deg, #b01515, #e25222);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.miniques{
-  font-size: 1.5em;
+
+.mini {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(103, 35, 159, 0.4), rgba(160, 88, 219, 0.3));
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.miniscore, .miniques {
+  font-size: 1.3em;
   font-weight: bold;
   color: #ffffff;
-  padding: 30px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(107, 36, 167, 0.7), rgba(142, 68, 173, 0.5));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
-  margin: 20px;
-  margin-left: 60px;
-} 
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.miniscore::before {
+  content: '🏆';
+  font-size: 1.2em;
+}
+
+.miniques::before {
+  content: '❓';
+  font-size: 1.2em;
+}
+
+/* Main score display */
+.score {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #67239f, #a058db);
+  padding: 20px 80px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  margin-left: 40px;
+  margin-right: 70px;
+}
+
+.score::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+      transparent 25%,
+      rgba(255, 255, 255, 0.1) 25%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 50%,
+      transparent 75%,
+      rgba(255, 255, 255, 0.1) 75%);
+  background-size: 4px 4px;
+  transform: rotate(45deg);
+  opacity: 0.3;
+}
 
 @media (max-width: 768px) {
   body {

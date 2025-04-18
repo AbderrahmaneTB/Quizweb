@@ -22,13 +22,15 @@ export default function Game() {
   const [isAnswered, setIsAnswered] = useState(false);
   const [questionnum,setQuestionum] = useState(1);
   const scrollRef = useRef(null);
+  const [maxScore, setMaxScore] = useState(0);
+
 
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const result = await fetch(
-          "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+          "https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple"
         );
         const res = await result.json();
 
@@ -54,6 +56,28 @@ export default function Game() {
 
 
   useEffect(() => {
+    const localHighScore = localStorage.getItem("maxScore");
+    if (localHighScore) {
+      setMaxScore(parseInt(localHighScore));
+    }
+  
+    const fetchMaxScore = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/max-score", {
+          method: "GET",
+          credentials: "include",
+        });
+        const data = await response.json();
+        if (data.status === "success") setMaxScore(data.maxScore);
+      } catch (err) {
+        
+      }
+    };
+    fetchMaxScore();
+  }, []);
+  
+
+  useEffect(() => {
     if (timeLeft === 0) return;
 
     const timer = setInterval(() => {
@@ -72,7 +96,7 @@ export default function Game() {
     setIsAnswered(false);
     setQuestionum(1);
 
-    const result = await fetch("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple");
+    const result = await fetch("https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple");
     const res = await result.json();
 
     const decodedQuestions = res.results.map((item) => ({
@@ -116,21 +140,52 @@ export default function Game() {
     }
   }, [currentquestion]);
 
-  const handleAnswer = (answer) => {
+  const handleAnswer = async (answer) => {
     if (isAnswered || timeLeft === 0) return;
-
     setSelectedAnswer(answer);
-    setIsAnswered(true); 
+    setIsAnswered(true);
+    
     setTimeLeft(0);
-
+  
     if (answer === currentquestion.correct_answer) {
-      setScore(score + 1);
+      const newScore = score + 1;
+      setScore(newScore);
+  
+      if (newScore > maxScore) {
+       
+        setMaxScore(newScore);
+        localStorage.setItem("maxScore", newScore);
+  
+       
+        console.log(" Sending new high to server:", newScore);
+  
+        try {
+          const res = await fetch("http://localhost:3001/update-score", {
+            method: "POST",
+            mode: "cors",                
+            credentials: "include",     
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ newScore }),
+          });
+          const data = await res.json();
+          console.log("  update-score response:", data);
+          if (data.status !== "success") {
+            console.error(" Server failed to update max score");
+          }
+        } catch (err) {
+          console.error(" Network error persisting max score:", err);
+        }
+      }
+  
       setAnswerStatus("correct");
     } else {
       setAnswerStatus("incorrect");
     }
+  
     scrollToNextSection();
   };
+  
+  
 
   const choices =
     allanswers.length > 0
@@ -152,6 +207,8 @@ export default function Game() {
         }
       }, [timeLeft]);
 
+      
+
   return (
     <div className="quizmain">
       <div className="circle-timer">
@@ -171,8 +228,9 @@ export default function Game() {
         <div className="time-text">{timeLeft}s</div>
       </div>
  <div className="mini">
-      <h3 className="miniscore">Score:{score}/10</h3>
-      <h3 className="miniques">Question :{questionnum}/10</h3>
+      <h3 className="miniscore">Score:{score}/15</h3>
+      <h3 className="miniscore">High Score: {maxScore}/15</h3>
+      <h3 className="miniques">Question :{questionnum}/15</h3>
       </div>
       {currentquestion && (
         <div className="quesbox">
@@ -199,7 +257,7 @@ export default function Game() {
           <Link href="/quizcom">
             <button>Back To Home</button>
           </Link>
-          <h3 className="score">Score: {score}/10</h3>
+          <h3 className="score">Score: {score}/15</h3>
         </div>
       )}
 
