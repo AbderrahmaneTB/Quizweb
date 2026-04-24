@@ -206,10 +206,10 @@ export default function Game() {
   }
 
   // ─── ACTIVE GAME SCREEN ─────────────────────────────
+  // ─── ACTIVE GAME SCREEN ─────────────────────────────
   return (
     <div className="quizmain">
       
-      {/* Wrapped timer in your new .timer-wrapper and added missing gradient <defs> */}
       <div className="timer-wrapper">
         <div className={`circle-timer ${timeLeft <= 5 && !isAnswered ? 'timer-urgent' : ''}`}>
          <svg className="progress-ring" viewBox="0 0 100 100" width="100%" height="100%">
@@ -228,7 +228,7 @@ export default function Game() {
               style={{
                 strokeDasharray: circumference,
                 strokeDashoffset: ((10 - timeLeft) / 10) * circumference,
-                stroke: timeLeft <= 5 && !isAnswered ? '#ef4444' : 'url(#timerGradient)' // Turns red when < 5s
+                stroke: timeLeft <= 5 && !isAnswered ? '#ef4444' : 'url(#timerGradient)'
               }}
             ></circle>
           </svg>
@@ -248,24 +248,36 @@ export default function Game() {
         </div>
       )}
 
-      {/* Applied your .answers-grid class here for the perfect 2x2 layout */}
       <div className="answers-grid">
         {choices}
       </div>
 
-      {/* ACTION AREA (Next Question) */}
+      {/* ─── ACTION AREA (Now Centered) ─── */}
       {(timeLeft === 0 || isAnswered) && (
-        <div ref={scrollRef} style={{ width: "100%", marginTop: "20px" }}>
+        <div 
+          ref={scrollRef} 
+          style={{ 
+            width: "100%", 
+            marginTop: "25px", 
+            display: "flex", 
+            flexDirection: "column", 
+            alignItems: "center" /* Centers everything horizontally */
+          }}
+        >
           
           {timeLeft === 0 && !isAnswered && (
-            <h2 className="result-heading" style={{ color: "#ef4444", marginBottom: "15px" }}>Time's up!</h2>
+            <h2 className="result-heading" style={{ color: "#ef4444", marginBottom: "15px", textAlign: "center" }}>
+              Time's up!
+            </h2>
           )}
           
-          <div className="result-actions">
-            <button className="btn-result-primary" onClick={nextques}>
-              {currentques === question.length - 1 ? "See Results" : "Next question"}
-            </button>
-          </div>
+          <button 
+            className="btn-result-primary" 
+            onClick={nextques}
+            style={{ width: "min(100%, 300px)" }} /* Prevents button from stretching too wide */
+          >
+            {currentques === question.length - 1 ? "See Results" : "Next question"}
+          </button>
 
         </div>
       )}
