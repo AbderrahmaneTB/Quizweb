@@ -20,4 +20,3 @@ export default function Answer({ choice, handleClick, isSelected, answerStatus, 
   );
 }
 
-
